@@ -7,8 +7,10 @@ using namespace std;
 // undirected weighted graph representation using adjacency list
 
 int main() {
-    ifstream fin("input.txt");   // opens the file
-    if (!fin) {                  // always check it actually opened
+    ifstream fin("input.txt");
+    ofstream fout("output.txt");   // opens/creates output.txt for writing
+
+    if (!fin || !fout) {
         cerr << "Could not open file!" << endl;
         return 1;
     }
@@ -26,13 +28,13 @@ int main() {
     }
     
     for(int i=0; i<n ; i++) {
-        cout << "Vertex : " << i << " -> ";
+        fout << "Vertex : " << i << " -> ";
         int a = graph[i].size();
         for (int j=0; j<a; j++) {
-            cout << "(" << graph[i][j].first << ", " << graph[i][j].second << ") ";
+            fout << "(" << graph[i][j].first << ", " << graph[i][j].second << ") ";
         }
-
     }
-
+    fin.close();  // good practice, though it auto-closes when fin goes out of scope
+    fout.close();
     return 0;
 }
