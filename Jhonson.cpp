@@ -73,7 +73,6 @@ bool bellmanFord(vector<vector<pair<int, int>>> &graph, int n, int src, vector<i
         }
         if (hasNegativeCycle) break;
     }
-
     return hasNegativeCycle;
 }
 
