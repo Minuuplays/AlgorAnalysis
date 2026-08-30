@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <vector>
 //                      #include <bits/stdc++.h>
 using namespace std;
@@ -6,14 +7,20 @@ using namespace std;
 // undirected weighted graph representation using adjacency list
 
 int main() {
+    ifstream fin("input.txt");   // opens the file
+    if (!fin) {                  // always check it actually opened
+        cerr << "Could not open file!" << endl;
+        return 1;
+    }
+
     int n,m;
-    cout << "Enter the number of vertices and edges: ";
-    cin >> n >> m;
+    // cout << "Enter the number of vertices and edges: ";
+    fin >> n >> m;
 
     vector<vector<pair<int, int>>> graph(n);
     for(int i = 0; i < m; i++) {
         int u, v, w;
-        cin >> u >> v >> w;
+        fin >> u >> v >> w;
         graph[u].push_back({v, w});
         graph[v].push_back({u, w});
     }
